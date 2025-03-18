@@ -20,3 +20,27 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from fuwoo_api.views import CustomUserViewSet, ServiceViewSet, ServiceRequestViewSet, BidViewSet
+
+
+router = DefaultRouter()
+router.register(r'users', CustomUserViewSet)
+router.register(r'services', ServiceViewSet)
+router.register(r'service-requests', ServiceRequestViewSet)
+router.register(r'bids', BidViewSet)
+
+urlpatterns = [
+    path('', include(router.urls)),
+]
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('fuwoo_api.urls')),  # Inclusion de l'API
+]
+

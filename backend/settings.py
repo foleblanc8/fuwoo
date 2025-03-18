@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'fuwoo_api',  # Notre app
     'rest_framework',  # Django REST Framework
-    'api',  # Notre application API
 ]
+
+
 
 
 MIDDLEWARE = [
@@ -128,3 +130,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'fuwoo_api.CustomUser'
